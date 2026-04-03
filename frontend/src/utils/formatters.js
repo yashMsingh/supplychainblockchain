@@ -20,6 +20,37 @@ export function formatTxHash(hash) {
   return hash.slice(0, 10) + "..." + hash.slice(-8);
 }
 
+export function formatContractValue(value) {
+  if (value == null) return "";
+  if (typeof value === "string" || typeof value === "number" || typeof value === "boolean") {
+    return String(value);
+  }
+  if (typeof value === "bigint") {
+    return value.toString();
+  }
+  if (Array.isArray(value)) {
+    return value.map((item) => formatContractValue(item)).join(", ");
+  }
+  if (typeof value === "object") {
+    if (typeof value.hash === "string") {
+      return value.hash;
+    }
+    if (typeof value.toString === "function" && value.toString !== Object.prototype.toString) {
+      const formatted = value.toString();
+      if (formatted !== "[object Object]") {
+        return formatted;
+      }
+    }
+    try {
+      return JSON.stringify(value);
+    } catch {
+      return String(value);
+    }
+  }
+
+  return String(value);
+}
+
 export const EVENT_TYPES = [
   { value: "quality_check", label: "Quality Check", icon: "QC" },
   { value: "processing", label: "Processing", icon: "PR" },

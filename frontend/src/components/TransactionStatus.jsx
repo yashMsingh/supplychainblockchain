@@ -1,5 +1,10 @@
+import { formatContractValue } from "../utils/formatters";
+
 export default function TransactionStatus({ txHash, status, message }) {
   if (!status) return null;
+
+  const safeTxHash = formatContractValue(txHash);
+  const safeMessage = formatContractValue(message);
 
   const styleMap = {
     pending: {
@@ -18,7 +23,7 @@ export default function TransactionStatus({ txHash, status, message }) {
       background: "#d63031",
       color: "#ffffff",
       icon: <span style={{ fontWeight: 900, fontSize: "20px" }}>✕</span>,
-      text: message || "Transaction failed"
+      text: safeMessage || "Transaction failed"
     }
   };
 
@@ -43,8 +48,8 @@ export default function TransactionStatus({ txHash, status, message }) {
         {cfg.icon}
         <span>{cfg.text}</span>
       </div>
-      {status === "success" && txHash ? <span style={{ fontSize: "12px", wordBreak: "break-all" }}>{txHash}</span> : null}
-      {status === "error" && message ? <span style={{ fontSize: "12px" }}>{message}</span> : null}
+      {status === "success" && safeTxHash ? <span style={{ fontSize: "12px", wordBreak: "break-all" }}>{safeTxHash}</span> : null}
+      {status === "error" && safeMessage ? <span style={{ fontSize: "12px" }}>{safeMessage}</span> : null}
     </div>
   );
 }

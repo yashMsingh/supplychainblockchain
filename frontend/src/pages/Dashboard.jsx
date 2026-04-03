@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { FaPlusCircle, FaExchangeAlt, FaClipboardList } from "react-icons/fa";
 import toast from "react-hot-toast";
 import { getReadOnlyContract } from "../utils/contractHelper";
-import { formatTxHash } from "../utils/formatters";
+import { formatContractValue, formatTxHash } from "../utils/formatters";
 
 function eventIcon(name) {
   if (name === "AssetCreated") return <FaPlusCircle color="#00b894" />;
@@ -142,7 +142,7 @@ export default function Dashboard() {
                     {eventIcon(evt.displayName)}
                     <strong>{evt.displayName}</strong>
                   </div>
-                  <p className="muted">Product ID: {evt.args?.productId || "-"}</p>
+                  <p className="muted">Product ID: {formatContractValue(evt.args?.productId) || "-"}</p>
                   <p className="muted">Block: {Number(evt.blockNumber)}</p>
                   <p className="muted">Tx: {formatTxHash(evt.transactionHash || "")}</p>
                 </div>
