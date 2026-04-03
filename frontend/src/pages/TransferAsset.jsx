@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ethers } from "ethers";
+import { FaCheck } from "react-icons/fa";
 import { useContract } from "../hooks/useContract";
 import WalletGuard from "../components/WalletGuard";
 import ConfirmModal from "../components/ConfirmModal";
@@ -127,7 +128,9 @@ export default function TransferAsset() {
                 placeholder="0x..."
               />
               {ethers.isAddress(form.newOwner || "") ? (
-                <span className="form-helper" style={{ color: "#00b894" }}>✓ Valid Ethereum address</span>
+                <span className="form-helper" style={{ color: "#00b894", display: "flex", alignItems: "center", gap: "4px" }}>
+                  <FaCheck size={12} /> Valid Ethereum address
+                </span>
               ) : null}
               {errors.newOwner ? <span className="form-error">{errors.newOwner}</span> : null}
             </div>

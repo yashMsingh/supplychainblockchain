@@ -11,13 +11,13 @@ export default function TransactionStatus({ txHash, status, message }) {
     success: {
       background: "#00b894",
       color: "#ffffff",
-      icon: <span style={{ fontWeight: 900 }}>✓</span>,
+      icon: <span style={{ fontWeight: 900, fontSize: "18px" }}>✓</span>,
       text: "Transaction confirmed!"
     },
     error: {
       background: "#d63031",
       color: "#ffffff",
-      icon: <span style={{ fontWeight: 900 }}>×</span>,
+      icon: <span style={{ fontWeight: 900, fontSize: "20px" }}>✕</span>,
       text: message || "Transaction failed"
     }
   };

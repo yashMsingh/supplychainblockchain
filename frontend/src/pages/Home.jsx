@@ -1,5 +1,6 @@
 import { useEffect } from "react"
 import { Link } from "react-router-dom"
+import { FaBox, FaExchangeAlt, FaClipboardList, FaSearch } from "react-icons/fa"
 import { WebGLShader } from "../components/ui/WebGLShader"
 import { LiquidButton } from "../components/ui/LiquidButton"
 
@@ -106,22 +107,53 @@ export default function Home() {
               flexWrap: "wrap",
             }}>
               <Link to="/create" style={{ textDecoration: "none" }}>
-                <LiquidButton
-                  style={{ color: "#00ff00", border: "2px solid #00ff00", fontSize: "20px", padding: "20px 60px", fontWeight: "bold" }}
-                  size="xxl"
+                <button style={{
+                  color: "#00ff00",
+                  border: "2px solid #00ff00",
+                  background: "transparent",
+                  fontSize: "20px",
+                  padding: "20px 60px",
+                  fontWeight: "bold",
+                  borderRadius: "9999px",
+                  cursor: "pointer",
+                  transition: "all 0.3s ease",
+                }}
+                onMouseEnter={e => {
+                  e.currentTarget.style.background = "rgba(0,255,0,0.1)"
+                  e.currentTarget.style.transform = "scale(1.05)"
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.background = "transparent"
+                  e.currentTarget.style.transform = "scale(1)"
+                }}
                 >
                   Get Started
-                </LiquidButton>
+                </button>
               </Link>
 
               <Link to="/history" style={{ textDecoration: "none" }}>
-                <LiquidButton
-                  style={{ color: "#00ff00", 
-                    border: "2px solid #00ff00", fontSize: "20px", padding: "20px 60px", fontWeight: "bold" }}
-                  size="xxl"
+                <button style={{
+                  color: "#00ff00",
+                  border: "2px solid #00ff00",
+                  background: "transparent",
+                  fontSize: "20px",
+                  padding: "20px 60px",
+                  fontWeight: "bold",
+                  borderRadius: "9999px",
+                  cursor: "pointer",
+                  transition: "all 0.3s ease",
+                }}
+                onMouseEnter={e => {
+                  e.currentTarget.style.background = "rgba(0,255,0,0.1)"
+                  e.currentTarget.style.transform = "scale(1.05)"
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.background = "transparent"
+                  e.currentTarget.style.transform = "scale(1)"
+                }}
                 >
                   View History
-                </LiquidButton>
+                </button>
               </Link>
             </div>
 
@@ -132,10 +164,10 @@ export default function Home() {
               marginTop: "48px",
             }}>
               {[
-                { icon: "📦", label: "Create Product", to: "/create" },
-                { icon: "🔄", label: "Transfer Asset", to: "/transfer" },
-                { icon: "📋", label: "Record Event",   to: "/record"   },
-                { icon: "🔍", label: "View History",   to: "/history"  },
+                { icon: <FaBox size={28} />, label: "Create Product", to: "/create" },
+                { icon: <FaExchangeAlt size={28} />, label: "Transfer Asset", to: "/transfer" },
+                { icon: <FaClipboardList size={28} />, label: "Record Event", to: "/record" },
+                { icon: <FaSearch size={28} />, label: "View History", to: "/history" },
               ].map((item) => (
                 <Link
                   key={item.to}
@@ -150,6 +182,10 @@ export default function Home() {
                     cursor: "pointer",
                     transition: "border-color 0.2s, background 0.2s",
                     background: "rgba(255,255,255,0.03)",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    gap: "10px",
                   }}
                   onMouseEnter={e => {
                     e.currentTarget.style.borderColor = "rgba(255,255,255,0.3)"
@@ -160,7 +196,7 @@ export default function Home() {
                     e.currentTarget.style.background = "rgba(255,255,255,0.03)"
                   }}
                   >
-                    <div style={{ fontSize: "1.8rem", marginBottom: "8px" }}>
+                    <div style={{ fontSize: "1.8rem", color: "#7c3aed", display: "flex", alignItems: "center", justifyContent: "center" }}>
                       {item.icon}
                     </div>
                     <div style={{

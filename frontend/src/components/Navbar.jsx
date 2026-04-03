@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { FaBars, FaTimes } from "react-icons/fa";
+import { FaBars, FaTimes, FaLink } from "react-icons/fa";
 import LoadingSpinner from "./LoadingSpinner";
 import { useWalletContext } from "../context/WalletContext";
 import { shortenAddress } from "../utils/formatters";
@@ -38,7 +38,7 @@ export default function Navbar() {
       <nav className="navbar">
         <div className="container navbar-content">
           <Link to="/" className="navbar-logo" onClick={() => setMenuOpen(false)}>
-            ⛓ SupplyChain
+            <FaLink style={{ marginRight: "8px", display: "inline" }} /> SupplyChain
           </Link>
 
           <div className={`navbar-links ${menuOpen ? "open" : ""}`}>
