@@ -5,15 +5,15 @@
 }
 
 :root {
-  --bg: #0f0f23;
-  --surface: #16213e;
-  --surface-2: #1a1a2e;
-  --surface-3: #1f2b54;
-  --border: #0f3460;
+  --bg: #000000;
+  --surface: #1a0a2e;
+  --surface-2: #16213e;
+  --surface-3: #0f3460;
+  --border: #4a148c;
   --text: #ffffff;
-  --muted: #a9b4d0;
-  --focus: #00b4d8;
-  --accent: #00b4d8;
+  --muted: #c4b5fd;
+  --focus: #7c3aed;
+  --accent: #7c3aed;
   --accent-2: #2ecc71;
   --danger: #d9534f;
 }
@@ -25,9 +25,9 @@ body,
 }
 
 body {
-  background: radial-gradient(circle at 15% 10%, #1e2a57 0%, var(--bg) 35%), var(--bg);
+  background: radial-gradient(circle at 15% 10%, #1a0a2e 0%, var(--bg) 35%), var(--bg);
   color: var(--text);
-  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  font-family: "Times New Roman", Times, serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -69,7 +69,7 @@ a {
   top: 0;
   z-index: 100;
   backdrop-filter: blur(6px);
-  background: rgba(26, 26, 46, 0.92);
+  background: rgba(0, 0, 0, 0.92);
   border-bottom: 1px solid var(--border);
 }
 
@@ -100,19 +100,19 @@ a {
 .nav-link {
   padding: 8px 12px;
   border-radius: 8px;
-  color: #e2e8ff;
+  color: #e9d5ff;
 }
 
 .navbar-link.active,
 .nav-link.active {
-  background: #243b66;
-  color: #7de2ff;
+  background: #5b21b6;
+  color: #e9d5ff;
 }
 
 .wallet-pill {
-  background: #1f4d38;
-  color: #7dffb3;
-  border: 1px solid #2ecc71;
+  background: #4a148c;
+  color: #e9d5ff;
+  border: 1px solid #7c3aed;
   border-radius: 999px;
   padding: 8px 12px;
   font-weight: 700;
@@ -120,9 +120,9 @@ a {
 
 .network-warning {
   text-align: center;
-  background: #3f1a1a;
-  border-bottom: 1px solid #7a3232;
-  color: #ffd2d2;
+  background: #4a148c;
+  border-bottom: 1px solid #7c3aed;
+  color: #e9d5ff;
   padding: 10px;
   font-weight: 600;
 }
@@ -216,18 +216,18 @@ select:focus,
 
 .btn-primary {
   background: var(--accent);
-  color: #07212d;
+  color: #ffffff;
 }
 
 .btn-primary:hover {
   transform: translateY(-1px);
-  filter: brightness(1.05);
+  filter: brightness(1.15);
 }
 
 .btn-secondary {
-  background: #25345a;
-  color: #d7e4ff;
-  border: 1px solid #314675;
+  background: #4a148c;
+  color: #e9d5ff;
+  border: 1px solid #7c3aed;
 }
 
 .btn-danger {
@@ -266,7 +266,7 @@ select:focus,
 
 .stat-card {
   background: var(--surface-3);
-  border: 1px solid #29457a;
+  border: 1px solid #7c3aed;
   border-radius: 10px;
   padding: 14px;
 }
@@ -274,7 +274,7 @@ select:focus,
 .stat-number {
   font-size: 1.5rem;
   font-weight: 800;
-  color: #8ce9ff;
+  color: #c4b5fd;
 }
 
 .stat-label {
@@ -285,7 +285,7 @@ select:focus,
 .timeline {
   position: relative;
   padding-left: 28px;
-  border-left: 2px solid #214a75;
+  border-left: 2px solid #7c3aed;
 }
 
 .timeline-item {
@@ -300,13 +300,13 @@ select:focus,
   width: 12px;
   height: 12px;
   border-radius: 999px;
-  border: 2px solid #0f3460;
+  border: 2px solid #7c3aed;
 }
 
 .timeline-card {
-  background: #16213e;
-  border: 1px solid #0f3460;
-  border-left: 4px solid #00b4d8;
+  background: #1a0a2e;
+  border: 1px solid #7c3aed;
+  border-left: 4px solid #7c3aed;
   border-radius: 10px;
   padding: 14px;
 }
@@ -335,9 +335,9 @@ select:focus,
 }
 
 .event-type-card {
-  background: #1a2345;
-  border: 1px solid #2b4472;
-  color: #d9e5ff;
+  background: #16213e;
+  border: 1px solid #7c3aed;
+  color: #e9d5ff;
   border-radius: 10px;
   min-height: 74px;
   display: flex;
@@ -350,14 +350,14 @@ select:focus,
 
 .event-type-card.selected {
   border-color: var(--accent);
-  box-shadow: 0 0 0 2px rgba(0, 180, 216, 0.18);
+  box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.28);
 }
 
 .event-type-icon {
   font-size: 0.75rem;
   letter-spacing: 0.5px;
   font-weight: 800;
-  color: #8ce9ff;
+  color: #c4b5fd;
 }
 
 .event-type-label {
@@ -377,8 +377,8 @@ select:focus,
 
 .modal-card {
   width: min(460px, 100%);
-  background: #16213e;
-  border: 1px solid #2c4677;
+  background: #1a0a2e;
+  border: 1px solid #7c3aed;
   border-radius: 12px;
   padding: 20px;
 }
@@ -440,11 +440,11 @@ select:focus,
 }
 
 ::-webkit-scrollbar-track {
-  background: #0b1220;
+  background: #000000;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1f3f6c;
+  background: #7c3aed;
   border-radius: 8px;
 }
 
@@ -454,8 +454,8 @@ select:focus,
     top: 70px;
     left: 0;
     right: 0;
-    background: #111834;
-    border-bottom: 1px solid #28426f;
+    background: #0a0a0a;
+    border-bottom: 1px solid #7c3aed;
     padding: 10px;
     display: none;
     flex-direction: column;

@@ -4,9 +4,12 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import LoadingSpinner from "./LoadingSpinner";
 import { useWalletContext } from "../context/WalletContext";
 import { shortenAddress } from "../utils/formatters";
+import { addHardhatNetwork } from "../utils/contractHelper";
+import toast from "react-hot-toast";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [addingNetwork, setAddingNetwork] = useState(false);
   const { address, isConnected, isConnecting, chainId, connect, disconnect } = useWalletContext();
 
   const links = [
@@ -17,6 +20,18 @@ export default function Navbar() {
     { to: "/record", label: "Record" },
     { to: "/history", label: "History" }
   ];
+
+  const handleAddNetwork = async () => {
+    setAddingNetwork(true);
+    try {
+      await addHardhatNetwork();
+      toast.success("Hardhat network added! Switching now...");
+    } catch (error) {
+      toast.error(error.message || "Failed to add network");
+    } finally {
+      setAddingNetwork(false);
+    }
+  };
 
   return (
     <>
@@ -61,7 +76,14 @@ export default function Navbar() {
       </nav>
 
       {isConnected && chainId !== 31337 ? (
-        <div className="network-warning">⚠ Wrong Network — Please switch to Hardhat Local (Chain ID: 31337)</div>
+        <div
+          className="network-warning"
+          onClick={handleAddNetwork}
+          style={{ cursor: "pointer", userSelect: "none" }}
+        >
+          ⚠ Wrong Network — Click to add Hardhat Local (Chain ID: 31337)
+          {addingNetwork && <LoadingSpinner size="sm" color="#ffff00" style={{ display: "inline-block", marginLeft: "8px" }} />}
+        </div>
       ) : null}
     </>
   );

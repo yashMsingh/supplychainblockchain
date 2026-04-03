@@ -78,3 +78,34 @@ export async function connectWallet() {
     throw new Error(normalizeWalletError(error));
   }
 }
+
+export async function addHardhatNetwork() {
+  const injected = getInjectedProvider();
+  if (!injected) {
+    throw new Error("MetaMask not found.");
+  }
+
+  try {
+    await injected.request({
+      method: "wallet_addEthereumChain",
+      params: [
+        {
+          chainId: "0x7a69", // 31337 in hex
+          chainName: "Hardhat Local",
+          nativeCurrency: {
+            name: "Ethereum",
+            symbol: "ETH",
+            decimals: 18,
+          },
+          rpcUrls: ["http://127.0.0.1:8545"],
+          blockExplorerUrls: [],
+        },
+      ],
+    });
+  } catch (error) {
+    if (error.code === 4001) {
+      throw new Error("Network addition was rejected.");
+    }
+    throw error;
+  }
+}

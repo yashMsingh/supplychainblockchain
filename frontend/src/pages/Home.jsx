@@ -107,8 +107,8 @@ export default function Home() {
             }}>
               <Link to="/create" style={{ textDecoration: "none" }}>
                 <LiquidButton
-                  style={{ color: "white", border: "1px solid rgba(255,255,255,0.3)" }}
-                  size="xl"
+                  style={{ color: "#00ff00", border: "2px solid #00ff00", fontSize: "20px", padding: "20px 60px", fontWeight: "bold" }}
+                  size="xxl"
                 >
                   Get Started
                 </LiquidButton>
@@ -116,9 +116,9 @@ export default function Home() {
 
               <Link to="/history" style={{ textDecoration: "none" }}>
                 <LiquidButton
-                  style={{ color: "rgba(255,255,255,0.7)", 
-                    border: "1px solid rgba(255,255,255,0.15)" }}
-                  size="xl"
+                  style={{ color: "#00ff00", 
+                    border: "2px solid #00ff00", fontSize: "20px", padding: "20px 60px", fontWeight: "bold" }}
+                  size="xxl"
                 >
                   View History
                 </LiquidButton>
