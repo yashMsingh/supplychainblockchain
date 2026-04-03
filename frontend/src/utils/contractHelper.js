@@ -46,8 +46,18 @@ export async function getProvider() {
   return provider;
 }
 
+async function validateContractDeployment(provider) {
+  const code = await provider.getCode(CONTRACT_ADDRESS);
+  if (!code || code === "0x") {
+    throw new Error(
+      "SupplyChain contract is not deployed on the connected Hardhat network. Restart the node if needed, then run `npx hardhat run scripts/deploy.js --network localhost`."
+    );
+  }
+}
+
 export async function getSigner() {
   const provider = await getProvider();
+  await validateContractDeployment(provider);
   return provider.getSigner();
 }
 
@@ -58,6 +68,7 @@ export async function getContract() {
 
 export async function getReadOnlyContract() {
   const provider = await getProvider();
+  await validateContractDeployment(provider);
   return new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, provider);
 }
 
